@@ -4,7 +4,12 @@ async function connect() {
   }
 
   const mysql = require("mysql2/promise");
-  const connection = await mysql.createConnection("mysql://root:12345678@localhost:3306/crud")
+  const connection = mysql.createConnection({
+    host: process.env.HOST,
+    port: process.env.PORTBD,
+    user: process.env.USER,
+    password: process.env.PASSWORD
+  })
   console.log('Conectou');
   global.connection = connection;
   return connection;

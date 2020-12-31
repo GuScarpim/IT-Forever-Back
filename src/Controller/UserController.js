@@ -6,7 +6,7 @@ exports.login = async (request, response) => {
   var username = request.body.username;
   var password = request.body.password;
   if (username && password) {
-    conn.query('SELECT * FROM crud.users WHERE username = ? AND password = ?', [username, password])
+    conn.query('SELECT * FROM foreverit.users WHERE username = ? AND password = ?', [username, password])
       .then(res => {
         console.log('aa', res[0])
         if (res[0].length > 0) {
@@ -27,7 +27,7 @@ exports.login = async (request, response) => {
 
 exports.getUsers = async (request, response) => {
   const conn = await connect();
-    conn.query('SELECT username FROM crud.users')
+    conn.query('SELECT username FROM foreverit.users')
       .then(res => {
         response.json({ data: res[0] });
       })

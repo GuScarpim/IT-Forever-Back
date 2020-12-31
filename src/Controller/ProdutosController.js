@@ -2,7 +2,7 @@ const connect = require('../Database/db');
 
 exports.get = async (req, res) => {
   const conn = await connect();
-  conn.query('SELECT * FROM crud.produtos;')
+  conn.query('SELECT * FROM foreverit.produtos;')
     .then((response) => {
       return res.status(200).send(response[0]);
     })
@@ -14,7 +14,7 @@ exports.get = async (req, res) => {
 exports.getId = async (req, res) => {
   const conn = await connect();
   const { id } = req.params;
-  conn.query(`SELECT * FROM crud.produtos WHERE id = ${id};`)
+  conn.query(`SELECT * FROM foreverit.produtos WHERE id = ${id};`)
     .then((response) => {
       return res.status(200).send(response[0]);
     })
@@ -28,7 +28,7 @@ exports.post = async (req, res) => {
   // Receber um obj para criação no banco MongoDB
   console.log('obj', obj)
   const conn = await connect();
-  const sql = 'INSERT INTO crud.produtos(descricao, valor) VALUES (?, ?);'
+  const sql = 'INSERT INTO foreverit.produtos(descricao, valor) VALUES (?, ?);'
   const values = [obj.descricao, obj.valor];
   await conn.query(sql, values)
     .then((ret) => {
@@ -44,7 +44,7 @@ exports.put = async (req, res) => {
   const obj = req.body;
   const { id } = req.params;
 
-  const sql = 'UPDATE crud.produtos SET descricao=?, valor=? WHERE id=?'
+  const sql = 'UPDATE foreverit.produtos SET descricao=?, valor=? WHERE id=?'
   const values = [obj.descricao, obj.valor, id];
   
   await conn.query(sql, values)
@@ -60,7 +60,7 @@ exports.delete = async (req, res) => {
   const conn = await connect();
 
   const { id } = req.params;
-  const sql = 'DELETE FROM crud.produtos WHERE id=?'
+  const sql = 'DELETE FROM foreverit.produtos WHERE id=?'
 
   await conn.query(sql, [id])
     .then((ret) => {

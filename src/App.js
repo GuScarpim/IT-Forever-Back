@@ -20,7 +20,7 @@
   app.use('/api/v1/user/', ProdutosRoute);
   app.use('/api/v1/profile/', UserRoute);
 
-  const port = process.env.PORT || 3030;
+  const port = process.env.PORT || 3000;
 
   app.listen(port);
   console.log('conectado a porta ' + port);

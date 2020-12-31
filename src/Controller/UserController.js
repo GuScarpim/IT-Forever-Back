@@ -10,7 +10,7 @@ exports.login = async (request, response) => {
       .then(res => {
         if (res[0].length > 0) {
           const id = 1;
-          const token = jwt.sign({ id }, process.env.SECRET, {
+          const token = jwt.sign({ id }, 'sempreIT', {
             expiresIn: 2000
           });
           return response.json({ auth: true, token: token });

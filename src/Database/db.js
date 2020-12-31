@@ -5,10 +5,10 @@ async function connect() {
 
   const mysql = require("mysql2/promise");
   const connection = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    port: process.env.PORTBD,
+    host: 'mysql742.umbler.com',
+    user: 'guscarpim',
+    password: 'mipracs123',
+    port: '41890',
     database: 'foreverit'
   })
   console.log('Conectou');
@@ -17,3 +17,4 @@ async function connect() {
 }
 
 module.exports = connect;
+

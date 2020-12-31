@@ -18,7 +18,7 @@ exports.login = async (request, response) => {
           return response.json({ message: 'Usuário não encontrado!' });
         }
       }).catch(error => {
-        return res.status(500).send(error);
+        return console.log(error);
       })
   } else {
     response.send('Please enter Username and Password!');

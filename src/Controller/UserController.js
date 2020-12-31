@@ -8,7 +8,6 @@ exports.login = async (request, response) => {
   if (username && password) {
     conn.query('SELECT * FROM foreverit.users WHERE username = ? AND password = ?', [username, password])
       .then(res => {
-        console.log('aa', res[0])
         if (res[0].length > 0) {
           const id = 1;
           const token = jwt.sign({ id }, process.env.SECRET, {
@@ -18,6 +17,8 @@ exports.login = async (request, response) => {
         } else {
           return response.json({ message: 'Usuário não encontrado!' });
         }
+      }).catch(error => {
+        return res.status(500).send(error);
       })
   } else {
     response.send('Please enter Username and Password!');
@@ -27,11 +28,12 @@ exports.login = async (request, response) => {
 
 exports.getUsers = async (request, response) => {
   const conn = await connect();
-    conn.query('SELECT username FROM foreverit.users')
-      .then(res => {
-        response.json({ data: res[0] });
-      })
-
+  conn.query('SELECT username FROM foreverit.users')
+    .then(res => {
+      response.json({ data: res[0] });
+    }).catch(error => {
+      return res.status(500).send(error);
+    })
 };
 
 exports.logout = async (request, response) => {

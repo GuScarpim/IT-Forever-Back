@@ -5,11 +5,11 @@ async function connect() {
 
   const mysql = require("mysql2/promise");
   const connection = mysql.createConnection({
-    host: 'mysql742.umbler.com',
-    user: 'guscarpim',
-    password: 'mipracs123',
-    port: '41890',
-    database: 'foreverit'
+    host: 'nome do seu host',
+    user: 'nome do seu usuário',
+    password: 'senha',
+    port: 'porta',
+    database: 'nome do seu banco de dados'
   })
   console.log('Conectou');
   // global.connection = connection;

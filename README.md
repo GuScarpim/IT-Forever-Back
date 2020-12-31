@@ -24,11 +24,3 @@
 <b>4º Rode o comando "yarn dev" ou "npm run dev".</b>
 
 # Desenvolvido por Gustavo Scarpim:
-
-## Front do projeto:
-
-## Desketop
-![Projeto em ação](./src/Assets/IT_forever.gif)
-
-## Mobile
-![Projeto em ação](./src/Assets/IT_foreverMobile.gif)
